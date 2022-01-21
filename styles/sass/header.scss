@@ -1,0 +1,500 @@
+.header {
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    &-mobile {
+        margin: .5rem;
+        height: 5rem;
+        display: flex;
+        fill: white;
+        mix-blend-mode: difference;
+        color: white;
+        align-items: center;
+        display: none;
+        z-index: 900;
+        @include mediaQuery(phone6) {
+            height: 2.5rem;
+            display: initial;
+        }
+
+        & > svg {
+            height: 3.5rem;
+            width: 3.5rem;
+
+            @include mediaQuery(tablet1100) {
+                height: 2rem;
+                width: 2rem;
+            }
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    &-logo {
+        margin: .5rem;
+        height: 5rem;
+        width: 20rem;
+        fill: white;
+        color: white;
+        display: flex;
+        align-items: center;
+        @include mediaQuery(phone6) {
+            height: 2.5rem;
+        }
+
+        & > svg {
+            height: 3.5rem;
+            width: 3.5rem;
+            @include mediaQuery(tablet1100) {
+                height: 2rem;
+                width: 2rem;
+            }
+        }
+        & > p {
+            margin-left: .5rem;
+            font-family: 'Ubuntu';
+            font-size: 2.5rem;
+            @include mediaQuery(tablet1100) {
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    &-liked {
+        margin: .5rem;
+        height: 5rem;
+        width: min-content;
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        fill: white;
+        width: 20rem;
+        @include mediaQuery(tablet1100) {
+            justify-content: space-evenly;
+        }
+        @include mediaQuery(phone6) {
+            display: none;
+        }
+
+        & > a > svg {
+            fill: white;
+            width: 3.5rem;
+            height: 3.5rem;
+            @include mediaQuery(tablet1100) {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+    }
+
+    &-search {
+        margin: .5rem;
+        position: relative;
+        @include mediaQuery(phone6) {
+            display: none;
+        }
+        & > input {
+            width: 40rem;
+            margin: 1rem;
+            padding: .5rem;
+            background: rgb(0, 0, 139);
+            color: white;
+            font-family: 'Ubuntu';
+            font-size: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            @include mediaQuery(tablet1100) {
+                width: 30rem;
+            }
+            @include mediaQuery(tablet7) {
+                width: 20rem;
+                padding: .25rem;
+                margin-top: 1.5rem;
+            }
+        }
+        & > button {
+            top: 0;
+            right: 0;
+            position: absolute;
+            margin: 1rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border: none;
+            background: none;
+            @include mediaQuery(tablet7) {
+                margin-top: 1.25rem;
+            }
+
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            & > svg {
+                fill: white;
+                width: 3.5rem;
+                height: 3.5rem;
+                @include mediaQuery(tablet1100) {
+                    width: 2rem;
+                    height: 2rem;
+                }
+            }
+        }
+    }
+
+    &-containerMobile {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        right: 0;
+        background-color: white;
+        -webkit-clip-path: circle(0% at 100% 0);
+        clip-path: circle(0% at 100% 0);
+        transition: all .5s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        &>input {
+            width: 100%;
+            padding: .5rem;
+            font-family: 'Ubuntu';
+        }
+        & > button {
+            margin: 1rem;
+            background: none;
+            border: none;
+            font-family: 'Ubuntu';
+            font-size: 1.5rem;
+            color: black;
+            fill: black;
+            transition: all .5s ease-in-out;
+            display: flex;
+            align-items: center;
+            &>svg {
+                width: 2rem;
+                height: 2rem;
+            }
+
+            &:hover {
+                cursor: pointer;
+                color:rgb(0, 140, 255);
+                fill:rgb(0, 140, 255);
+            }
+        }
+    }
+
+    .mobilePath100 {
+        -webkit-clip-path: circle(150.0% at 100% 0);
+        clip-path: circle(150.0% at 100% 0);
+    }
+
+    &-containerLiked {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        &-box {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+
+            &-title {
+                position: absolute;
+                top: .5rem;
+                left: 50%;
+                transform: translate(-50%, 0%);
+                font-size: 2rem;
+                mix-blend-mode: difference;
+                color: white;
+            }
+            &-list {
+                position: absolute;
+                transform: translate(-50%, -50%);
+                top: 50%;
+                left: 50%;
+                width: 80%;
+                height: 80%;
+                background-color: white;
+                overflow-y: scroll;
+                @include mediaQuery(tablet1100) {
+                    width: 100%;
+                }
+
+                &-item {
+                    width: 100%;
+                    height: 25vh;
+                    justify-content: space-between;
+                    display: flex;
+                    @include mediaQuery(tablet7) {
+                        flex-direction: column;
+                        align-items: center;
+                        height: max-content;
+                    }
+
+                    &-img {
+                        & > img {
+                            height: 100%;
+                            @include mediaQuery(tablet7) {
+                                width: 10rem;
+                                height: auto;
+                            }
+                        }
+                        @include mediaQuery(tablet1100) {
+                            width: 10%;
+                        }
+                        @include mediaQuery(tablet7) {
+                            width: 100%;
+                            height: auto;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+
+                    }
+                    &-title {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 2rem;
+                        width: 30%;
+                        @include mediaQuery(tablet1100) {
+                            width: 40%;
+                        }
+                        @include mediaQuery(tablet7) {
+                            width: 100%;
+                        }
+                    }
+                    &-options {
+                        & > button {
+                            border: none;
+                            background: none;
+                            height: 100%;
+                            fill: red;
+                            transition: all .5s ease-in-out;
+                            &:hover {
+                                cursor: pointer;
+                                fill: rgb(0, 153, 255);
+                            }
+                            & > svg {
+                                width: 5rem;
+                                height: 5rem;
+                            }
+                        }
+                    }
+                }
+            }
+            & > button {
+                top: 1rem;
+                right: 2rem;
+                width: auto;
+                height: auto;
+                position: absolute;
+                mix-blend-mode: difference;
+                fill: rgb(255, 255, 255);
+                background: none;
+                border: none;
+                transition: all .5s ease-in-out;
+                &:hover {
+                    cursor: pointer;
+                    transform: scale(1.1);
+                }
+                & > svg {
+                    width: 3rem;
+                    height: 3rem;
+                    @include mediaQuery(tablet1100) {
+                        width: 2rem;
+                        height: 2rem;
+                    }
+                }
+            }
+        }
+    }
+
+    &-containerList {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+
+        &-box {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            &-title {
+                position: absolute;
+                top: .5rem;
+                left: 50%;
+                transform: translate(-50%, 0%);
+                font-size: 2rem;
+                mix-blend-mode: difference;
+                color: white;
+                @include mediaQuery(tablet7) {
+                    font-size: 1rem;
+                }
+            }
+            &-list {
+                position: absolute;
+                transform: translate(-50%, -50%);
+                top: 50%;
+                left: 50%;
+                width: 80%;
+                height: 80%;
+                background-color: white;
+                overflow-y: scroll;
+                @include mediaQuery(tablet1100) {
+                    width: 100%;
+                }
+
+                &-item {
+                    width: 100%;
+                    height: 25vh;
+                    justify-content: space-between;
+                    display: flex;
+                    @include mediaQuery(tablet7) {
+                        flex-direction: column;
+                        align-items: center;
+                        height: max-content;
+                    }
+
+                    &-img {
+
+                        & > img {
+                            height: 100%;
+                            @include mediaQuery(tablet7) {
+                                width: 10rem;
+                                height: auto;
+                            }
+                        }
+                        @include mediaQuery(tablet1100) {
+                            width: 10%;
+                        }
+                        @include mediaQuery(tablet7) {
+                            width: 100%;
+                            height: auto;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+                    &-title {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 2rem;
+
+                    }
+                    &-remove {
+                        width: 20%;
+                        font-size: 1.5rem;
+                        background: none;
+                        border: none;
+                        color: red;
+                        @include mediaQuery(tablet7) {
+                            width: 100%;
+                            height: auto;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+
+                        &:hover {
+                            cursor: pointer;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+            & > button {
+                top: 1rem;
+                right: 2rem;
+                width: auto;
+                height: auto;
+                position: absolute;
+                mix-blend-mode: difference;
+                fill: rgb(255, 255, 255);
+                background: none;
+                border: none;
+                transition: all .5s ease-in-out;
+                &:hover {
+                    cursor: pointer;
+                    transform: scale(1.1);
+                }
+                & > svg {
+                    width: 3rem;
+                    height: 3rem;
+                }
+            }
+        }
+    }
+
+    &-containerTrailer {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1000;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1100;
+
+        & > .videoDiv {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            & > iframe {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 70%;
+                height: 80%;
+                @include mediaQuery(tablet9) {
+                    width: 100%;
+                }
+                @include mediaQuery(tablet7) {
+                    height: 60%;
+                }
+                @include mediaQuery(phone6) {
+                    height: 50%;
+                }
+            }
+            & > button {
+                top: 1rem;
+                right: 2rem;
+                width: auto;
+                height: auto;
+                position: absolute;
+                mix-blend-mode: difference;
+                fill: rgb(255, 255, 255);
+                background: none;
+                border: none;
+                transition: all .5s ease-in-out;
+                &:hover {
+                    cursor: pointer;
+                    transform: scale(1.1);
+                }
+                & > svg {
+                    width: 3rem;
+                    height: 3rem;
+                }
+            }
+        }
+
+
+    }
+}
+.dnone {
+    display: none;
+}

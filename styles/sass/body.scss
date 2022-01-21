@@ -1,0 +1,298 @@
+.window {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  position: relative;
+  overflow: hidden;
+  &-image {
+    width: 100%;
+    & > img {
+      width: 100%;
+      @include mediaQuery(tablet1100) {
+        height: 100%;
+        width: auto;
+      }
+    }
+  }
+
+  &-colorizer {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 88, 0.8);
+  }
+  &-source {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 10;
+
+    font-family: "Source Sans Pro";
+    font-size: 4rem;
+    display: flex;
+    align-items: center;
+    @include mediaQuery(phone6) {
+      flex-direction: column;
+      font-size: 2rem;
+    }
+    & > p {
+      mix-blend-mode: difference;
+      color: rgba(255, 255, 255, 0.5);
+      margin-right: 1rem;
+      @include mediaQuery(phone6) {
+        width: 100%;
+      }
+    }
+    & > img {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+  &-slider {
+    width: max-content;
+    height: 70%;
+    position: absolute;
+    z-index: 50;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    transform: translate(0%, -50%);
+    transition: left 0.5s ease-in-out;
+
+    &-slide {
+      margin-right: 10px;
+      width: max-content;
+      height: 50%;
+      & > img {
+        height: 100%;
+        width: 100%;
+      }
+      filter: grayscale(25%);
+      filter: brightness(25%);
+      transition: all 0.5s ease-in-out;
+    }
+
+    &-control {
+      &-left {
+        position: absolute;
+        fill: rgba(255, 255, 255, 0.5);
+        top: 50%;
+        left: 1.5%;
+        transform: translate(0%, -50%);
+        font-size: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 70;
+        transition: fill 0.5s ease-in-out;
+        & > svg {
+          width: 5rem;
+        }
+        &:hover {
+          cursor: pointer;
+          fill: rgba(255, 255, 255, 1);
+        }
+        @include mediaQuery(phone6) {
+          width: 2.5rem;
+          fill: white;
+        }
+      }
+      &-right {
+        position: absolute;
+        fill: rgba(255, 255, 255, 0.5);
+        top: 50%;
+        right: 1.5%;
+        transform: translate(0%, -50%);
+        font-size: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 70;
+        transition: fill 0.5s ease-in-out;
+        & > svg {
+          width: 5rem;
+        }
+        &:hover {
+          cursor: pointer;
+          fill: rgba(255, 255, 255, 1);
+        }
+        @include mediaQuery(phone6) {
+          width: 2.5rem;
+          fill: white;
+        }
+      }
+    }
+  }
+}
+.current {
+  height: 100%;
+  width: auto;
+  filter: grayscale(100%);
+  filter: brightness(100%);
+  z-index: 100;
+  & > img {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+.next {
+  height: 75%;
+  filter: grayscale(50%);
+  filter: brightness(50%);
+}
+.last {
+  height: 75%;
+  filter: grayscale(50%);
+  filter: brightness(50%);
+}
+
+.selectedMovie {
+  width: 100%;
+  height: auto;
+  position: relative;
+  @include mediaQuery(tablet1100) {
+    width: 100%;
+    overflow: hidden;
+  }
+  &-back {
+    width: 100%;
+    @include mediaQuery(tablet1100) {
+      height: 100%;
+      width: auto;
+    }
+    & > img {
+      width: 100%;
+      @include mediaQuery(tablet1100) {
+        height: 100vh;
+        width: auto;
+      }
+    }
+  }
+  &-container {
+    position: absolute;
+    background-color: rgba(0, 0, 88, 1);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1.5rem;
+    display: flex;
+    width: 70%;
+    border-radius: 15px;
+    @include mediaQuery(tablet1100) {
+      width: 100%;
+      border-radius: 0px;
+      padding: 1rem;
+    }
+
+    &-img {
+      height: 35rem;
+      @include mediaQuery(tablet9) {
+        display: none;
+      }
+      & > img {
+        height: 100%;
+      }
+    }
+    &-data {
+      margin-left: 1rem;
+      color: white;
+      width: 100%;
+      @include mediaQuery(phone5) {
+        margin-left: 0rem;
+      }
+
+      &-btns {
+        display: flex;
+        justify-content: space-evenly;
+
+        & > button {
+          width: 5rem;
+          height: 5rem;
+          border-radius: 50%;
+          background-color: black;
+          border: 2px solid red;
+          transition: all 0.5s ease-in-out;
+
+          &:hover {
+            cursor: pointer;
+            background-color: red;
+          }
+
+          & > svg {
+            mix-blend-mode: difference;
+            fill: white;
+            width: 3rem;
+            height: 3rem;
+          }
+        }
+      }
+      &-title {
+        margin: 1.5rem 0rem;
+        font-size: 2.5rem;
+      }
+      &-rating {
+        &-stars {
+          display: flex;
+          justify-content: space-evenly;
+          fill: white;
+          margin-bottom: 0.5rem;
+          & > svg {
+            width: 2.5rem;
+            height: 2.5rem;
+            @include mediaQuery(phone5) {
+              width: 1.5rem;
+              height: 1.5rem;
+            }
+          }
+        }
+        &-number {
+          font-size: 2rem;
+        }
+        &-voices {
+          font-size: 0.75rem;
+          margin-bottom: 1rem;
+        }
+      }
+      &-premiereDate {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      &-overview {
+        font-size: 1.25rem;
+        height: 35%;
+        width: 100%;
+        overflow-y: scroll;
+      }
+    }
+  }
+}
+
+.loader {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & > svg {
+    fill: white;
+    animation: spin 2s normal infinite ease-in-out;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

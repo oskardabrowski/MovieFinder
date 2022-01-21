@@ -1,0 +1,37 @@
+@mixin mediaQuery($size) {
+    @if $size == phone5 {
+        @media(max-width: 31.25em) {
+            @content;
+        };
+    }
+    @if $size == phone6 {
+        @media(max-width: 37.5em) {
+            @content;
+        };
+    }
+    @if $size == tablet7 {
+        @media(max-width: 43.75em) {
+            @content;
+        };
+    }
+    @if $size == tablet9 {
+        @media(max-width: 56.25em) {
+            @content;
+        };
+    }
+    @if $size == tablet1100 {
+        @media(max-width: 68.75em) {
+            @content;
+        };
+    }
+    @if $size == desktop {
+        @media(max-width: 81.25em) {
+            @content;
+        };
+    }
+    @if $size == largeDesktop {
+        @media(max-width: 312.5em) {
+            @content;
+        };
+    }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "styles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "listen:sass": "node-sass sass/main.scss css/style.css -w",
+    "server": "live-server --browser=firefox",
+    "sass": "npm-run-all --parallel server listen:sass",
+    "build:sass" : "node-sass sass/main.scss css/stylemin.css --output-style compressed"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.3.3",
+    "concat": "^1.0.3",
+    "node-sass": "^6.0.1",
+    "npm-run-all": "^4.1.5"
+  }
+}
